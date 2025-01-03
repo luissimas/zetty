@@ -3,7 +3,13 @@ name = "zetty"
 version = "0.1.0"
 description = "A command line tool to manage notes in a Zettelkasten"
 authors = ["Luís Simas <luissimas@protonmail.com>"]
+license = "MIT OR Apache-2.0"
 edition = "2021"
+readme = "README.md"
+homepage = "https://github.com/luissimas/zetty"
+repository = "https://github.com/luissimas/zetty"
+keywords = ["cli", "note-taking", "productivity", "zettelkasten"]
+categories = ["command-line-utilities"]
 
 [dependencies]
 anyhow = "1.0.95"

@@ -20,3 +20,9 @@ Options:
   -h, --help     Print help
   -V, --version  Print version
 ```
+
+## Installation
+
+```shell
+cargo install zetty
+```
