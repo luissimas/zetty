@@ -1,8 +1,8 @@
 use std::io;
 
-use anyhow::Result;
+use anyhow::{Context, Result};
 use clap::{Parser, Subcommand};
-use zetty::create_note;
+use zetty::{config::Config, create_note};
 
 #[derive(Debug, Parser)]
 #[command(version, about, long_about=None)]
@@ -36,6 +36,8 @@ fn main() -> Result<()> {
         .with_max_level(log_level)
         .init();
 
+    let config = Config::from_system().context("Could not load configuration from system")?;
+
     match cli.command {
         Commands::New { name } => {
             let name = name.unwrap_or_else(|| {
@@ -43,7 +45,7 @@ fn main() -> Result<()> {
                     .prompt()
                     .expect("Could not get user input")
             });
-            create_note(&name)?;
+            create_note(&config, &name)?;
         }
     }
 

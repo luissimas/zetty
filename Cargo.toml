@@ -8,8 +8,10 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.95"
 clap = { version = "4.5.23", features = ["derive"] }
+confy = "0.6.1"
 human-panic = "2.0.2"
 inquire = "0.7.5"
+serde = { version = "1.0.217", features = ["derive"] }
 tracing = "0.1.41"
 tracing-subscriber = "0.3.19"
 
