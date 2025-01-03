@@ -2,7 +2,7 @@ use std::io;
 
 use anyhow::{Context, Result};
 use clap::{Parser, Subcommand};
-use zetty::{config::Config, create_note};
+use zetty::{config::Config, open_note};
 
 #[derive(Debug, Parser)]
 #[command(version, about, long_about=None)]
@@ -47,7 +47,7 @@ fn main() -> Result<()> {
                     .prompt()
                     .expect("Could not get user input"),
             };
-            create_note(&config, &name)?;
+            open_note(&config, &name)?;
         }
     }
 
