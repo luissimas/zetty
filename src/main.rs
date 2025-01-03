@@ -19,7 +19,8 @@ enum Commands {
     /// Create a new note
     New {
         /// The name of the new note
-        name: Option<String>,
+        #[arg(trailing_var_arg = true)]
+        name: Option<Vec<String>>,
     },
 }
 
@@ -40,11 +41,12 @@ fn main() -> Result<()> {
 
     match cli.command {
         Commands::New { name } => {
-            let name = name.unwrap_or_else(|| {
-                inquire::Text::new("Note name:")
+            let name = match name {
+                Some(name) => name.join(" "),
+                None => inquire::Text::new("Note name:")
                     .prompt()
-                    .expect("Could not get user input")
-            });
+                    .expect("Could not get user input"),
+            };
             create_note(&config, &name)?;
         }
     }
